@@ -1,0 +1,20 @@
+#!/bin/bash -l
+
+#SBATCH --nodes 1
+#SBATCH --ntasks 1
+#SBATCH --cpus-per-task 3
+#SBATCH --mem 20048
+#SBATCH --time 72:0:0
+
+
+sleep 10
+
+echo "hello from `hostname`"
+
+module load gcc python
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+srun python3 /home/amsharma/DMRGparallel/j1j3spin1/pythone.py
+
+sleep 10

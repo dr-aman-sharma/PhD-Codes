@@ -1,0 +1,18 @@
+#!/bin/bash -l
+
+#SBATCH --nodes 1
+#SBATCH --ntasks 1
+#SBATCH --cpus-per-task 3
+#SBATCH --mem 15048
+
+sleep 10
+
+echo "hello from `hostname`"
+
+module load gcc python julia
+
+export JULIA_NUM_THREADS=3
+
+srun julia /home/amsharma/DMRGparallel/dmrgjulia/j1j3mags/julia11.jl
+
+sleep 10
